@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import './stylesheets/reset.css';
+import './stylesheets/searchbar.css';
 
 ReactDOM.render(
   <React.StrictMode>

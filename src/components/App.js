@@ -1,8 +1,8 @@
+import SearchBar from "./SearchBar";
+
 function App() {
   return (
-    <div id="market-mog">
-      React App
-    </div>
+    <SearchBar />
   );
 }
 

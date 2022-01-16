@@ -1,0 +1,9 @@
+.search-results {
+  /*display: none;*/
+  background-color: blue;
+}
+
+.search-results-open {
+  display: block;
+  background-color: red;
+}

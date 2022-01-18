@@ -1,8 +1,8 @@
-import SearchBar from "./SearchBar";
+import RouteSwitch from "../routers/RouteSwitch";
 
 function App() {
   return (
-    <SearchBar />
+    <RouteSwitch />
   );
 }
 

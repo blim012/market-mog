@@ -3,13 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SalesHistoryChart from "./SaleHistoryChart";
 import PricePerUnit from "./PricePerUnitChart";
+import secondsToDate from "../helpers/secondsToDate";
 import axios from "axios";
-
-const convertSecondsToDate = (seconds) => {
-  let date = new Date(null);
-  date.setTime(seconds * 1000);
-  return date.toLocaleString();
-};
 
 const ItemData = (props) => {
   const [itemData, setItemData] = useState(null);
@@ -33,7 +28,7 @@ const ItemData = (props) => {
     const hqHistoryPPU = { labels: [], pricePerUnit: [] };
   
     data.entries.forEach((entry) => {
-      const date = convertSecondsToDate(entry.timestamp);
+      const date = secondsToDate(entry.timestamp);
       if(entry.hq) {
         hqHistory.labels.push(date);
         hqHistory.quantitySold.push(entry.quantity);

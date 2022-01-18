@@ -8,25 +8,44 @@ import axios from "axios";
 
 const ItemData = (props) => {
   const [itemData, setItemData] = useState(null);
+  const [itemProperties, setItemProperties] = useState(null);
   const { itemID, world } = useParams();
-  const url = `https://universalis.app/api/history/${world}/${itemID}?entries=500&statsWithin=604800000&entriesWithin=604800`;
+  const itemMarketURL = `https://universalis.app/api/history/${world}/${itemID}?entries=500&statsWithin=604800000&entriesWithin=604800`;
+  const itemInfoURL = `https://xivapi.com/Item/${itemID}`;
 
   useEffect(() => {
-    axios.get(url)
+    axios.get(itemInfoURL)
     .then((response) => {
-      parseData(response.data);
+      const properties = response.data; 
+      setItemProperties({
+        canBeHq: properties.CanBeHq,
+        stackSize: properties.StackSize
+      });
     })
     .catch((error) => {
       console.log('something went wrong: ' + error);
     });
   }, []);
 
+  useEffect(() => {
+    if(itemProperties) {
+      axios.get(itemMarketURL)
+      .then((response) => {
+        console.log('Response obtained');
+        parseData(response.data);
+      })
+      .catch((error) => {
+        console.log('something went wrong: ' + error);
+      });
+    }
+  }, [itemProperties]);
+
   const parseData = (data) => {
     const nqHistory = { labels: [], quantitySold: [], pricePerQuantity: [] };
     const hqHistory = { labels: [], quantitySold: [], pricePerQuantity: [] };
     const nqHistoryPPU = { labels: [], pricePerUnit: [] };
     const hqHistoryPPU = { labels: [], pricePerUnit: [] };
-  
+
     data.entries.forEach((entry) => {
       const date = secondsToDate(entry.timestamp);
       if(entry.hq) {
@@ -54,20 +73,33 @@ const ItemData = (props) => {
     <div id="item-data">
       {
         itemData ?
-          <>
-            <div>
-              <SalesHistoryChart data={itemData.nqHistory} />
+          <section id="sales-charts" data-testid="sales-charts">
+            <div id="nq-sales">
+              {
+                itemProperties.stackSize > 1 &&
+                  <div className="sales-history-chart" data-testid="nq-sales-history">
+                    <SalesHistoryChart data={itemData.nqHistory} />
+                  </div>
+              }
+              <div className="price-per-unit-chart" data-testid="nq-ppu-history">
+                <PricePerUnit data={itemData.nqHistoryPPU} />
+              </div>
             </div>
-            <div>
-              <SalesHistoryChart data={itemData.hqHistory} />
-            </div>
-            <div>
-              <PricePerUnit data={itemData.nqHistoryPPU} />
-            </div>
-            <div>
-              <PricePerUnit data={itemData.hqHistoryPPU} />
-            </div>
-          </>
+            {
+              itemProperties.canBeHq &&
+                <div id="hq-sales">
+                  {
+                    itemProperties.stackSize > 1 &&
+                      <div className="sales-history-chart" data-testid="hq-sales-history">
+                        <SalesHistoryChart data={itemData.hqHistory} />
+                      </div>
+                  }
+                  <div className="price-per-unit-chart" data-testid="hq-ppu-history">
+                    <PricePerUnit data={itemData.hqHistoryPPU} />
+                  </div>
+                </div>
+            }
+          </section>
         :
           <div>Loading...</div>
       }

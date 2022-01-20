@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ItemCharts from "./ItemCharts";
+import ItemPriceTables from "./ItemPriceTables";
 
 const ItemData = (props) => {
   const [itemProperties, setItemProperties] = useState(null);
@@ -27,11 +28,18 @@ const ItemData = (props) => {
     <div id="item-data" data-testid="item-data">
       {
         itemProperties ?
-          <ItemCharts 
-            world={world} 
-            itemID={itemID} 
-            itemProperties={itemProperties} 
-          />
+          <>
+            <ItemCharts 
+              world={world} 
+              itemID={itemID} 
+              itemProperties={itemProperties} 
+            />
+            <ItemPriceTables
+              world={world} 
+              itemID={itemID} 
+              itemProperties={itemProperties}
+            />
+          </>
         :
           <div className="loading">Loading...</div>
       }

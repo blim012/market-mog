@@ -21,6 +21,10 @@ ChartJS.register(
   Tooltip,
 );
 
+ChartJS.defaults.color = '#E8E6E3';
+ChartJS.defaults.font.family = 'Source Sans Pro';
+ChartJS.defaults.font.size = 14;
+
 const SalesHistoryChart = (props) => {
   const { labels, quantitySold, pricePerQuantity } = props.data;
 
@@ -33,8 +37,7 @@ const SalesHistoryChart = (props) => {
             type: 'bar',
             label: 'Quantity Sold',
             yAxisID: 'Quantity Sold',
-            backgroundColor: 'red',
-            borderColor: 'rgb(0, 0, 0)',
+            backgroundColor: '#2D2A25',
             borderwidth: 1,
             data: quantitySold,
             order: 2
@@ -43,8 +46,8 @@ const SalesHistoryChart = (props) => {
             type: 'line',
             label: 'Price Per Quantity',
             yAxisID: 'Price Per Quantity',
-            backgroundColor: 'blue',
-            borderColor: 'rgb(0, 0, 0)',
+            backgroundColor: '#008060',
+            borderColor: '#574C4D',
             borderwidth: 1,
             data: pricePerQuantity,
             order: 1
@@ -52,6 +55,9 @@ const SalesHistoryChart = (props) => {
         ]
       }}
       options={{
+        layout: {
+          padding: 15
+        },
         scales: {
           'Price Per Quantity': {
             display: true,
@@ -70,10 +76,22 @@ const SalesHistoryChart = (props) => {
             ticks: {
               max: 99,
               min: 1,
-              stepSize: 3,
+              stepSize: 20,
               callback: (value, index, ticks) => {
                 return value + ' units sold';
               }
+            }
+          },
+          x: {
+            ticks: {
+                callback: function(value, index, ticks) {
+                  if(index === 0 || index === (ticks.length - 1)) {
+                    return this.getLabelForValue(value).split(',')[0];
+                  }
+                },
+                maxRotation: 0,
+                minRotation: 0,
+                padding: 10
             }
           }
         },
@@ -94,7 +112,8 @@ const SalesHistoryChart = (props) => {
               } 
             }
           }
-        }
+        },
+        maintainAspectRatio: false
       }}
     />
   );

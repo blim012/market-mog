@@ -21,6 +21,10 @@ ChartJS.register(
   Tooltip,
 );
 
+ChartJS.defaults.color = '#E8E6E3';
+ChartJS.defaults.font.family = 'Source Sans Pro';
+ChartJS.defaults.font.size = 14;
+
 const PricePerUnit = (props) => {
   const { labels, pricePerUnit } = props.data;
 
@@ -33,14 +37,16 @@ const PricePerUnit = (props) => {
             type: 'line',
             label: 'Price Per Unit',
             yAxisID: 'Price Per Unit',
-            backgroundColor: 'blue',
-            borderColor: 'rgb(0, 0, 0)',
-            borderwidth: 1,
+            backgroundColor: '#008060',
+            borderColor: '#574C4D',
             data: pricePerUnit
           }
         ]
       }}
       options={{
+        layout: {
+          padding: 15
+        },
         scales: {
           'Price Per Unit': {
             display: true,
@@ -50,6 +56,18 @@ const PricePerUnit = (props) => {
               callback: (value, index, ticks) => {
                 return value + ' gil/unit';
               }
+            }
+          },
+          x: {
+            ticks: {
+                callback: function(value, index, ticks) {
+                  if(index === 0 || index === (ticks.length - 1)) {
+                    return this.getLabelForValue(value).split(',')[0];
+                  }
+                },
+                maxRotation: 0,
+                minRotation: 0,
+                padding: 10
             }
           }
         },
@@ -68,7 +86,8 @@ const PricePerUnit = (props) => {
               } 
             }
           }
-        }
+        },
+        maintainAspectRatio: false
       }}
     />
   );

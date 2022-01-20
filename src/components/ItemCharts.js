@@ -62,11 +62,13 @@ const ItemCharts = (props) => {
             <div id="nq-sales">
               {
                 itemProperties.stackSize > 1 &&
-                  <div className="sales-history-chart" data-testid="nq-sales-history">
+                  <div className="chart sales-history-chart" data-testid="nq-sales-history">
+                    <h2 className="chart-title">NQ Sale History <span>within 7 days</span></h2>
                     <SalesHistoryChart data={itemHistory.nqHistory} />
                   </div>
               }
-              <div className="price-per-unit-chart" data-testid="nq-ppu-history">
+              <div className="chart price-per-unit-chart" data-testid="nq-ppu-history">
+                <h2 className="chart-title">NQ Price-Per-Unit Sale History <span>within 7 days</span></h2>
                 <PricePerUnit data={itemHistory.nqHistoryPPU} />
               </div>
             </div>
@@ -75,11 +77,13 @@ const ItemCharts = (props) => {
                 <div id="hq-sales">
                   {
                     itemProperties.stackSize > 1 &&
-                      <div className="sales-history-chart" data-testid="hq-sales-history">
+                      <div className="chart sales-history-chart" data-testid="hq-sales-history">
+                        <h2 className="chart-title">HQ Sale History <span>within 7 days</span></h2>
                         <SalesHistoryChart data={itemHistory.hqHistory} />
                       </div>
                   }
-                  <div className="price-per-unit-chart" data-testid="hq-ppu-history">
+                  <div className="chart price-per-unit-chart" data-testid="hq-ppu-history">
+                    <h2 className="chart-title">HQ Price-Per-Unit Sale History <span>within 7 days</span></h2>
                     <PricePerUnit data={itemHistory.hqHistoryPPU} />
                   </div>
                 </div>

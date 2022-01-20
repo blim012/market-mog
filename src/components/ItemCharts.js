@@ -55,10 +55,10 @@ const ItemCharts = (props) => {
   };
 
   return (
-    <div id="item-charts">
+    <section id="item-charts">
       {
         itemHistory ?
-          <section id="sales-charts" data-testid="sales-charts">
+          <div id="sales-charts" data-testid="sales-charts">
             <div id="nq-sales">
               {
                 itemProperties.stackSize > 1 &&
@@ -84,11 +84,11 @@ const ItemCharts = (props) => {
                   </div>
                 </div>
             }
-          </section>
+          </div>
         :
           <div>Loading...</div>
       }
-    </div>
+    </section>
   );
 };
 

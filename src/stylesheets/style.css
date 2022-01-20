@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+:root {
+  /* Font Sizes */
+  --step--3: clamp(0.65rem, 0.56rem + 0.48vw, 0.90rem);
+  --step--2: clamp(0.90rem, 0.65rem + 0.66vw, 1.12rem);
+  --step--1: clamp(0.94rem, 0.76rem + 0.90vw, 1.40rem);
+  --step-0: clamp(1.13rem, 0.88rem + 1.22vw, 1.75rem);
+  --step-1: clamp(1.35rem, 1.02rem + 1.63vw, 2.19rem);
+  --step-2: clamp(1.62rem, 1.19rem + 2.17vw, 2.73rem);
+  --step-3: clamp(1.94rem, 1.37rem + 2.88vw, 3.42rem);
+  --step-4: clamp(2.33rem, 1.58rem + 3.79vw, 4.27rem);
+  --step-5: clamp(2.80rem, 1.81rem + 4.96vw, 5.34rem);
+  
+  /* Colors */
+  --primary-bg-color: #222426;
+  --secondary-bg-color: #181A1B;
+  --teritary-bg-color: #000000;
+
+  --primary-accent-color: #008060;
+  --secondary-accent-color: #303336;
+
+  --font-color: #E8E6E3;
+  --subtext-font-color: #9E9689;
+}
+
+canvas {
+  background-color: var(--secondary-bg-color);
+  border-radius: 20px;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  color: var(--font-color);
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2 {
+  font-size: var(--step--1);
+  margin-bottom: 1rem;
+}
+
+h2 > span {
+  font-size: var(--step--2);
+  color: var(--subtext-font-color);
+  font-style: italic;
+}

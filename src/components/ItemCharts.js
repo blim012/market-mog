@@ -73,7 +73,7 @@ const ItemCharts = (props) => {
               </div>
             </div>
             {
-              itemProperties.canBeHq &&
+              itemProperties.canBeHq ?
                 <div id="hq-sales">
                   {
                     itemProperties.stackSize > 1 &&
@@ -87,6 +87,8 @@ const ItemCharts = (props) => {
                     <PricePerUnit data={itemHistory.hqHistoryPPU} />
                   </div>
                 </div>
+              :
+                  null
             }
           </div>
         :

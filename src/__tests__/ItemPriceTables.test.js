@@ -57,8 +57,15 @@ it('fetches item prices and displays them', async () => {
     }
   });
 
+  const itemProperties = {
+    canBeHq: false,
+    stackSize: 99,
+    name: 'test',
+    description: 'test',
+    imageURL: 'test/url'
+  }
 
-  const { queryByTestId } = render(<ItemPriceTables />);
+  const { queryByTestId } = render(<ItemPriceTables itemProperties={itemProperties} />);
   await waitFor(() => {
     expect(queryByTestId('item-listings')).toBeInTheDocument();
     expect(queryByTestId('item-recent-history')).toBeInTheDocument();

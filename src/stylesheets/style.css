@@ -15,18 +15,23 @@
   /* Colors */
   --primary-bg-color: #222426;
   --secondary-bg-color: #181A1B;
-  --teritary-bg-color: #000000;
+  --tertiary-bg-color: #0F1111;
 
   --primary-accent-color: #008060;
-  --secondary-accent-color: #303336;
+  --secondary-accent-color: #000000;
+  --tertiary-accent-color: #252226;
 
   --font-color: #E8E6E3;
   --subtext-font-color: #9E9689;
+
+  --green-text: #53E64E;
+  --red-text: #EF233C;
 }
 
 canvas {
   background-color: var(--secondary-bg-color);
   border-radius: 20px;
+  box-shadow: 0 2px 5px black;
 }
 
 body {

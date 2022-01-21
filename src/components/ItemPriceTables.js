@@ -75,68 +75,92 @@ const ItemPriceTables = (props) => {
       {
         itemPriceData ?
           <>
-            <table id="item-listings" data-testid="item-listings">
-              <thead>
-                <tr>
-                  <th>Listing</th>
-                  <th>HQ</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total Price</th>
-                  <th>%Diff</th>
-                  <th>Retainer</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  itemPriceData.listingData.map((listing, idx) => {
-                    return (
-                      <tr key={uniqid('listing-')} data-testid={`listing-${idx + 1}`}>
-                        <td>{idx + 1}</td>
-                        <td>{listing.isHq}</td>
-                        <td>{listing.price}</td>
-                        <td>{listing.quantity}</td>
-                        <td>{listing.totalPrice}</td>
-                        <td>{listing.diff}</td>
-                        <td>{listing.retainer}</td>
-                      </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
-            <table id="item-recent-history" data-testid="item-recent-history">
-              <thead>
-                <tr>
-                  <th>Listing</th>
-                  <th>HQ</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total Price</th>
-                  <th>%Diff</th>
-                  <th>Buyer</th>
-                  <th>Timestamp</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  itemPriceData.recentHistory.map((soldListing, idx) => {
-                    return (
-                      <tr key={uniqid('soldListing-')} data-testid={`sold-listing-${idx + 1}`}>
-                        <td>{idx + 1}</td>
-                        <td>{soldListing.isHq}</td>
-                        <td>{soldListing.price}</td>
-                        <td>{soldListing.quantity}</td>
-                        <td>{soldListing.total}</td>
-                        <td>{soldListing.diff}</td>
-                        <td>{soldListing.buyer}</td>
-                        <td>{soldListing.timestamp}</td>
-                      </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
+            <div id="item-listings" data-testid="item-listings">
+              <h2>Current Listing Prices</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Listing</th>
+                    <th>HQ</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>%Diff</th>
+                    <th>Retainer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    itemPriceData.listingData.map((listing, idx) => {
+                      const hqClass = (listing.isHq ? 'green-text' : 'red-text');
+                      const hqCell = (listing.isHq ? 'Yes' : 'No');
+                      const diffClass = 
+                        (parseFloat(listing.diff) <= 0.0 ? 'green-text' : 'red-text');
+
+                      return (
+                        <tr
+                          className="item-row"
+                          key={uniqid('listing-')} 
+                          data-testid={`listing-${idx + 1}`}
+                        >
+                          <td>{idx + 1}</td>
+                          <td className={hqClass}>{hqCell}</td>
+                          <td>{listing.price}</td>
+                          <td>{listing.quantity}</td>
+                          <td>{listing.totalPrice}</td>
+                          <td className={diffClass}>{listing.diff}</td>
+                          <td>{listing.retainer}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
+            <div id="item-recent-history" data-testid="item-recent-history">
+              <h2>Recently Sold History</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Listing</th>
+                    <th>HQ</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>%Diff</th>
+                    <th>Buyer</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    itemPriceData.recentHistory.map((soldListing, idx) => {
+                      const hqClass = (soldListing.isHq ? 'green-text' : 'red-text');
+                      const hqCell = (soldListing.isHq ? 'Yes' : 'No');
+                      const diffClass = 
+                        (parseFloat(soldListing.diff) <= 0.0 ? 'green-text' : 'red-text');
+
+                      return (
+                        <tr
+                          className="item-row"
+                          key={uniqid('soldListing-')}
+                          data-testid={`sold-listing-${idx + 1}`}
+                        >
+                          <td>{idx + 1}</td>
+                          <td className={hqClass}>{hqCell}</td>
+                          <td>{soldListing.price}</td>
+                          <td>{soldListing.quantity}</td>
+                          <td>{soldListing.totalPrice}</td>
+                          <td className={diffClass}>{soldListing.diff}</td>
+                          <td>{soldListing.buyer}</td>
+                          <td>{soldListing.timestamp}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
           </>
         :
           <div className="loading">Loading...</div>

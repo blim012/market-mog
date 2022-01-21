@@ -5,6 +5,7 @@ import './stylesheets/reset.css';
 import './stylesheets/searchbar.css';
 import './stylesheets/itemData.css';
 import './stylesheets/itemCharts.css';
+import './stylesheets/itemPriceTables.css';
 import './stylesheets/style.css';
 
 ReactDOM.render(

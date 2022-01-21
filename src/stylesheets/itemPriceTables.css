@@ -68,11 +68,3 @@
   border-radius: 20px;
   box-shadow: 0 2px 5px black;
 }
-
-.green-text {
-  color: var(--green-text);
-}
-
-.red-text {
-  color: var(--red-text);
-}

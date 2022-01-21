@@ -50,3 +50,11 @@ h2 > span {
   color: var(--subtext-font-color);
   font-style: italic;
 }
+
+.green-text {
+  color: var(--green-text);
+}
+
+.red-text {
+  color: var(--red-text);
+}

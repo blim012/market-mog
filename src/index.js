@@ -7,6 +7,7 @@ import './stylesheets/itemData.css';
 import './stylesheets/itemCharts.css';
 import './stylesheets/itemPriceTables.css';
 import './stylesheets/style.css';
+import './stylesheets/itemDescription.css';
 
 ReactDOM.render(
   <React.StrictMode>

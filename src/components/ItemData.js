@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ItemCharts from "./ItemCharts";
 import ItemPriceTables from "./ItemPriceTables";
+import ItemDescription from "./ItemDescription";
 
 const ItemData = (props) => {
   const [itemProperties, setItemProperties] = useState(null);
@@ -16,7 +17,10 @@ const ItemData = (props) => {
       const properties = response.data; 
       setItemProperties({
         canBeHq: properties.CanBeHq,
-        stackSize: properties.StackSize
+        stackSize: properties.StackSize,
+        name: properties.Name,
+        description: properties.Description.split('<span')[0],
+        imageURL: properties.IconHD
       });
     })
     .catch((error) => {
@@ -29,6 +33,9 @@ const ItemData = (props) => {
       {
         itemProperties ?
           <>
+            <ItemDescription 
+              itemProperties={itemProperties} 
+            />
             <ItemCharts 
               world={world} 
               itemID={itemID} 

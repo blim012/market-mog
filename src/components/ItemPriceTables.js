@@ -22,8 +22,8 @@ const ItemPriceTables = (props) => {
   const parseData = (data) => {
     const listingData = [];
     const recentHistory = [];
-    let nqAverage = data.currentAveragePriceNQ;
-    let hqAverage = data.currentAveragePriceHQ;
+    let nqAverage = data.averagePriceNQ;
+    let hqAverage = data.averagePriceHQ;
     console.log(nqAverage);
     console.log(hqAverage);
 
@@ -71,95 +71,106 @@ const ItemPriceTables = (props) => {
   };
 
   return (
-    <section id="item-tables">
+    <section id="item-price-tables">
       {
         itemPriceData ?
           <>
-            <div id="item-listings" data-testid="item-listings">
-              <h2>Current Listing Prices</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Listing</th>
-                    <th>HQ</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>%Diff</th>
-                    <th>Retainer</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    itemPriceData.listingData.map((listing, idx) => {
-                      const hqClass = (listing.isHq ? 'green-text' : 'red-text');
-                      const hqCell = (listing.isHq ? 'Yes' : 'No');
-                      const diffClass = 
-                        (parseFloat(listing.diff) <= 0.0 ? 'green-text' : 'red-text');
-
-                      return (
-                        <tr
-                          className="item-row"
-                          key={uniqid('listing-')} 
-                          data-testid={`listing-${idx + 1}`}
-                        >
-                          <td>{idx + 1}</td>
-                          <td className={hqClass}>{hqCell}</td>
-                          <td>{listing.price}</td>
-                          <td>{listing.quantity}</td>
-                          <td>{listing.totalPrice}</td>
-                          <td className={diffClass}>{listing.diff}</td>
-                          <td>{listing.retainer}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
+            <div id="weekly-averages">
+              <p>{`NQ Weekly Sale Average: ${Math.round(itemPriceData.nqAverage)} gil`}</p>
+              {
+                itemProperties.canBeHq ? 
+                  <p>{`HQ Weekly Sale Average: ${Math.round(itemPriceData.hqAverage)} gil`}</p>
+                :
+                  null
+              }
             </div>
-            <div id="item-recent-history" data-testid="item-recent-history">
-              <h2>Recently Sold History</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Listing</th>
-                    <th>HQ</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>%Diff</th>
-                    <th>Buyer</th>
-                    <th>Timestamp</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    itemPriceData.recentHistory.map((soldListing, idx) => {
-                      const hqClass = (soldListing.isHq ? 'green-text' : 'red-text');
-                      const hqCell = (soldListing.isHq ? 'Yes' : 'No');
-                      const diffClass = 
-                        (parseFloat(soldListing.diff) <= 0.0 ? 'green-text' : 'red-text');
+            <div id="recent-item-tables">
+              <div id="item-listings" data-testid="item-listings">
+                <h2>Current Listing Prices</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Listing</th>
+                      <th>HQ</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total Price</th>
+                      <th>%Diff</th>
+                      <th>Retainer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      itemPriceData.listingData.map((listing, idx) => {
+                        const hqClass = (listing.isHq ? 'green-text' : 'red-text');
+                        const hqCell = (listing.isHq ? 'Yes' : 'No');
+                        const diffClass = 
+                          (parseFloat(listing.diff) <= 0.0 ? 'green-text' : 'red-text');
 
-                      return (
-                        <tr
-                          className="item-row"
-                          key={uniqid('soldListing-')}
-                          data-testid={`sold-listing-${idx + 1}`}
-                        >
-                          <td>{idx + 1}</td>
-                          <td className={hqClass}>{hqCell}</td>
-                          <td>{soldListing.price}</td>
-                          <td>{soldListing.quantity}</td>
-                          <td>{soldListing.totalPrice}</td>
-                          <td className={diffClass}>{soldListing.diff}</td>
-                          <td>{soldListing.buyer}</td>
-                          <td>{soldListing.timestamp}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
+                        return (
+                          <tr
+                            className="item-row"
+                            key={uniqid('listing-')} 
+                            data-testid={`listing-${idx + 1}`}
+                          >
+                            <td>{idx + 1}</td>
+                            <td className={hqClass}>{hqCell}</td>
+                            <td>{listing.price}</td>
+                            <td>{listing.quantity}</td>
+                            <td>{listing.totalPrice}</td>
+                            <td className={diffClass}>{listing.diff}</td>
+                            <td>{listing.retainer}</td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
+              <div id="item-recent-history" data-testid="item-recent-history">
+                <h2>Recently Sold History</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Listing</th>
+                      <th>HQ</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total Price</th>
+                      <th>%Diff</th>
+                      <th>Buyer</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      itemPriceData.recentHistory.map((soldListing, idx) => {
+                        const hqClass = (soldListing.isHq ? 'green-text' : 'red-text');
+                        const hqCell = (soldListing.isHq ? 'Yes' : 'No');
+                        const diffClass = 
+                          (parseFloat(soldListing.diff) <= 0.0 ? 'green-text' : 'red-text');
+
+                        return (
+                          <tr
+                            className="item-row"
+                            key={uniqid('soldListing-')}
+                            data-testid={`sold-listing-${idx + 1}`}
+                          >
+                            <td>{idx + 1}</td>
+                            <td className={hqClass}>{hqCell}</td>
+                            <td>{soldListing.price}</td>
+                            <td>{soldListing.quantity}</td>
+                            <td>{soldListing.totalPrice}</td>
+                            <td className={diffClass}>{soldListing.diff}</td>
+                            <td>{soldListing.buyer}</td>
+                            <td>{soldListing.timestamp}</td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
             </div>
           </>
         :

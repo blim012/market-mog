@@ -34,7 +34,7 @@ const WorldSelect = (props) => {
           </optgroup>
           <optgroup label="Primal">
             <option value="behemoth">Behemoth</option>
-            <option value="excalibur"></option>
+            <option value="excalibur">Excalibur</option>
             <option value="exodus">Exodus</option>
             <option value="famfrit">Famfrit</option>
             <option value="hyperion">Hyperion</option>

@@ -1,0 +1,26 @@
+#home {
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.market-mog-header {
+  font-size: var(--step-2);
+  margin-bottom: 100px;
+}
+
+.home-welcome {
+  padding: 2rem;
+  background-color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: var(--step-0);
+  border-radius: 20px;
+  box-shadow: 0 2px 5px black;
+}
+
+.sample-item {
+  color: var(--primary-accent-color);
+}

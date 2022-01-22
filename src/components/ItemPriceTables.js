@@ -65,6 +65,7 @@ const ItemPriceTables = (props) => {
   // Get percentage difference of a listed price from an average
   // Returns a string formatted to the positive or negative percentage difference
   const getDiffFromAverage = (price, average) => {
+    if(average === 0) return '+0%';
     const diff = (((price - average) / average) * 100).toFixed(2);
     const sign = (diff >= 0 ? '+' : '');
     return `${sign}${diff}%`;

@@ -1,24 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchResult from "./SearchResult";
-
-/*
-document.addEventListener('click', (e) => {
-  let searchResults = document.querySelector('.search-results');
-  let searchFormInput = document.querySelector('.search-form-input');
-  let clickedElement = e.target;
-
-  if(searchFormInput && searchFormInput.contains(clickedElement)) {
-    searchResults.classList.add('search-results-open');
-  } else if(searchResults && !(searchResults.contains(clickedElement))) {
-    searchResults.classList.remove('search-results-open');
-  }
-});
-*/
+import WorldSelect from "./WorldSelect";
 
 const SearchBar = (props) => {
   const [queryURL, setQueryURL] = useState('');
+  const [world, setWorld] = useState('adamantoise');
   const url = 'https://xivapi.com/search?indexes=item&string=';
+
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      let xivItemSearchbar = document.querySelector('.xiv-item-searchbar');
+      let searchResults = document.querySelector('.search-results');
+      let clickedElement = e.target;
+
+      if(searchResults && xivItemSearchbar && xivItemSearchbar.contains(clickedElement)) {
+        searchResults.classList.add('search-results-show');
+      } else if(searchResults) {
+        searchResults.classList.remove('search-results-show');
+      }
+    });
+  }, []);
 
   const createQueryUrl = (e) => {
     e.preventDefault();
@@ -29,10 +31,22 @@ const SearchBar = (props) => {
   return (
     <div className="xiv-item-searchbar">
       <form className="search-form" onSubmit={createQueryUrl}>
-        <input className="search-form-input" type="text" name="item"></input>
-        <input className="search-form-submit" type="submit" value="Search" />
+        <WorldSelect setWorld={setWorld} />
+        <div className="search-query-wrapper">
+          <input 
+            className="search-form-input" 
+            type="text" 
+            name="item"
+            autoComplete="off"
+          />
+          <SearchResult queryURL={queryURL} world={world} />
+        </div>
+        <input 
+          className="search-form-submit" 
+          type="submit" 
+          value="Search" 
+        />
       </form>
-      <SearchResult queryURL={queryURL} />
     </div>
   );
 };

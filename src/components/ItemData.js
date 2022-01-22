@@ -5,6 +5,7 @@ import axios from "axios";
 import ItemCharts from "./ItemCharts";
 import ItemPriceTables from "./ItemPriceTables";
 import ItemDescription from "./ItemDescription";
+import SearchBar from "./SearchBar";
 
 const ItemData = (props) => {
   const [itemProperties, setItemProperties] = useState(null);
@@ -33,6 +34,7 @@ const ItemData = (props) => {
       {
         itemProperties ?
           <>
+            <SearchBar />
             <ItemDescription 
               itemProperties={itemProperties} 
             />

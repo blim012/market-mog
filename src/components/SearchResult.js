@@ -5,7 +5,8 @@ import axios from "axios";
 import uniqid from 'uniqid';
 
 const SearchResult = (props) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+  const world = props.world;
   const url = props.queryURL;
 
   useEffect(() => {
@@ -25,17 +26,41 @@ const SearchResult = (props) => {
   }, [url]);
 
   return (
-    <ul className="search-results" data-testid="search-results">
-    { 
-      data.map((result, idx) => {
-        return (
-          <li key={uniqid('result-')} data-testid={`result-${idx}`}>
-            <p>{result.Name}</p>
-          </li>
-        );
-      })
-    }
-    </ul>
+    <>
+      {
+        data ?
+          <ul 
+          className="search-results search-results-show" 
+          data-testid="search-results"
+          >
+            { 
+              data.length > 0 ?
+                data.map((result, idx) => {
+                  return (
+                    <li 
+                      key={uniqid('result-')} 
+                      data-testid={`result-${idx}`}
+                      className="result"
+                    >
+                      <a href={`/item/${result.ID}/${world}`}>
+                        <p>{result.Name}</p>
+                      </a>
+                    </li>
+                  );
+                })
+              :
+                <li 
+                  key={uniqid('result-')}
+                  className="result empty-result"
+                >
+                  <p>Nothing Found!</p>
+                </li>
+            }
+          </ul>
+        :
+          null
+      }
+    </>
   );
 };
 

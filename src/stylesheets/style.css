@@ -34,10 +34,20 @@ canvas {
   box-shadow: 0 2px 5px black;
 }
 
+body,
+input,
+select,
+a {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: var(--font-color);
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: var(--primary-bg-color);
-  color: var(--font-color);
-  font-family: 'Source Sans Pro', sans-serif;
 }
 
 h2 {
@@ -49,6 +59,15 @@ h2 > span {
   font-size: var(--step--2);
   color: var(--subtext-font-color);
   font-style: italic;
+}
+
+input {
+  background-color: var(--secondary-bg-color);
+  outline: none;
+}
+
+select {
+  background-color: var(--secondary-bg-color);
 }
 
 .green-text {

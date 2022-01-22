@@ -6,8 +6,8 @@ import WorldSelect from "./WorldSelect";
 const SearchBar = (props) => {
   const [queryURL, setQueryURL] = useState('');
   const [world, setWorld] = useState('adamantoise');
-  const url = 'https://xivapi.com/search?indexes=item&string=';
-
+  const url = 'https://xivapi.com/search?filters=IsUntradable=0&indexes=item&string=';
+  
   useEffect(() => {
     document.addEventListener('click', (e) => {
       let xivItemSearchbar = document.querySelector('.xiv-item-searchbar');

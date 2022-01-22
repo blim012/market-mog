@@ -1,3 +1,13 @@
 #item-data {
   padding: 2rem 4rem;
 }
+
+#item-data-header {
+  text-align: center;
+  font-size: var(--step-0);
+}
+
+.world-name {
+  text-transform: capitalize;
+  color: var(--green-text);
+}

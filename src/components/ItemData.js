@@ -35,6 +35,9 @@ const ItemData = (props) => {
         itemProperties ?
           <>
             <SearchBar />
+            <header id="item-data-header">
+              <h1>Sales Data for {itemProperties.name} in <span className="world-name">{world}</span></h1>
+            </header>
             <ItemDescription 
               itemProperties={itemProperties} 
             />

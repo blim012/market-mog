@@ -1,0 +1,9 @@
+.credits {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.credits a {
+  font-size: var(--step--3);
+  color: var(--primary-accent-color);
+}

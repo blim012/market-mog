@@ -78,12 +78,14 @@ select {
   color: var(--red-text);
 }
 
-.error {
+.error,
+.status {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: var(--step-0);
+  margin-bottom: 2rem;
 }
 
 .error-message {

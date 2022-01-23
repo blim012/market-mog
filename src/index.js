@@ -10,6 +10,7 @@ import './stylesheets/style.css';
 import './stylesheets/itemDescription.css';
 import './stylesheets/home.css';
 import './stylesheets/credits.css';
+import './stylesheets/logo.css';
 
 ReactDOM.render(
   <React.StrictMode>

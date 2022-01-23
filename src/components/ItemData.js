@@ -8,6 +8,7 @@ import ItemPriceTables from "./ItemPriceTables";
 import ItemDescription from "./ItemDescription";
 import SearchBar from "./SearchBar";
 import Credits from "./Credits";
+import Logo from "./Logo";
 
 const ItemData = (props) => {
   const [itemProperties, setItemProperties] = useState(null);
@@ -41,6 +42,7 @@ const ItemData = (props) => {
       {
         error ?
           <div className="error">
+            <Logo />
             <p>Oops! Something went wrong. <br /></p>
             <p className="error-message">Error message: {error}</p>
           </div>
@@ -50,7 +52,10 @@ const ItemData = (props) => {
             {
               itemProperties ?
                 <>
-                  <SearchBar />
+                  <div className="search-bar-logo-wrapper">
+                    <Logo />
+                    <SearchBar />
+                  </div>
                   <header id="item-data-header">
                     <h1>Sales Data for {itemProperties.name} in <span className="world-name">{world}</span></h1>
                   </header>

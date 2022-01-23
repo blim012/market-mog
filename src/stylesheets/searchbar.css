@@ -105,3 +105,14 @@
   height: 2rem;
   width: 2rem;
 }
+
+.search-bar-logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.search-bar-logo-wrapper .xiv-item-searchbar {
+  margin-left: 2rem;
+  margin-bottom: 0;
+}

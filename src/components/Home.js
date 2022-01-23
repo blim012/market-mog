@@ -1,11 +1,15 @@
 import React from "react";
 import Credits from "./Credits";
 import SearchBar from "./SearchBar";
+import Logo from "./Logo";
 
 const Home = () => {
   return (
     <main id="home">
-      <h1 className="market-mog-header">Market Mog</h1>
+      <header className="home-header">
+        <Logo />
+        <h1 className="market-mog-header">Market Mog</h1>
+      </header>
       <SearchBar />
       <div className="home-welcome">
         <p>

@@ -16,7 +16,6 @@ const ItemPriceTables = (props) => {
       parseData(response.data);
     })
     .catch((error) => {
-      console.log('something went wrong: ' + error);
       setError(true);
     });
   }, []);
@@ -26,8 +25,6 @@ const ItemPriceTables = (props) => {
     const recentHistory = [];
     let nqAverage = data.averagePriceNQ;
     let hqAverage = data.averagePriceHQ;
-    console.log(nqAverage);
-    console.log(hqAverage);
 
     data.listings.forEach((listing) => {
       let price = listing.pricePerUnit;

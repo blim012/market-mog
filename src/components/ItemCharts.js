@@ -15,12 +15,9 @@ const ItemCharts = (props) => {
     if(itemProperties) {
       axios.get(itemHistoryURL)
       .then((response) => {
-        console.log('Response obtained');
-        console.log(response);
         parseData(response.data);
       })
       .catch((error) => {
-        console.log('something went wrong: ' + error);
         setError(true);
       });
     }

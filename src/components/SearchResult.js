@@ -11,15 +11,10 @@ const SearchResult = (props) => {
 
   useEffect(() => {
     if(url !== '') {
-      console.log('fetching...');
-      console.log('queryURL: ' + url);
       trackPromise(
         axios.get(url, { mode: 'cors' })
         .then((response) => {
           setData(response.data.Results);
-        })
-        .catch((error) => {
-          console.log('something went wrong');
         })
       , 'search-bar-area');
     }

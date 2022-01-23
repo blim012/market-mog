@@ -37,3 +37,14 @@
   position: absolute;
   bottom: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+  #home {
+    padding: 1rem;
+  }
+
+  #home .credits {
+    margin-top: 50px;
+    position: relative;
+  }
+} 

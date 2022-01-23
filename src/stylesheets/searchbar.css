@@ -6,7 +6,7 @@
 
 .search-form-input,
 .search-results {
-  width: 500px;
+  width: clamp(250px, 500px, 35vw);
 }
 
 .search-form {
@@ -116,3 +116,26 @@
   margin-left: 2rem;
   margin-bottom: 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .search-bar-logo-wrapper {
+    flex-direction: column;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-form-submit {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .search-bar-logo-wrapper .xiv-item-searchbar {
+    margin-left: 0;
+  }
+
+  .form-select-wrapper {
+    margin: 1rem 0 1rem 0;
+  }
+} 

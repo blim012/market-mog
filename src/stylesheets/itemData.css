@@ -11,3 +11,9 @@
   text-transform: capitalize;
   color: var(--green-text);
 }
+
+@media only screen and (max-width: 768px) {
+  #item-data {
+    padding: 2rem 1rem;
+  }
+}

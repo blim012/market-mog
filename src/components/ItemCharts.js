@@ -99,7 +99,7 @@ const ItemCharts = (props) => {
               error ?
                 <p className="error-message">Error: Could not obtain sales data</p>
               :
-                <div>Loading Sales Data...</div>
+                <div className="loader"></div>
             }
           </div>
       }

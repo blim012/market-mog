@@ -69,7 +69,9 @@ const ItemData = (props) => {
                   />
                 </>
               :
-                <div className="loading">Loading...</div>
+                <div className="status">
+                  <div className="loader"></div>
+                </div>
             }
           </div>
       }

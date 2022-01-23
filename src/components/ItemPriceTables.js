@@ -182,7 +182,7 @@ const ItemPriceTables = (props) => {
               error ?
                 <p className="error-message">Error: Could not obtain listing data</p>
               :
-                <div>Loading Listing Data...</div>
+                <div className="loader"></div>
             }
           </div>
       }

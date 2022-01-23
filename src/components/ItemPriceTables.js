@@ -6,6 +6,7 @@ import secondsToDate from "../helpers/secondsToDate";
 
 const ItemPriceTables = (props) => {
   const [itemPriceData, setItemPriceData] = useState(null);
+  const [error, setError] = useState(false);
   const { world, itemID, itemProperties } = props;
   const itemPricesURL = `https://universalis.app/api/${world}/${itemID}?entries=10&statsWithin=604800000&entriesWithin=604800`;
 
@@ -16,6 +17,7 @@ const ItemPriceTables = (props) => {
     })
     .catch((error) => {
       console.log('something went wrong: ' + error);
+      setError(true);
     });
   }, []);
 
@@ -175,7 +177,14 @@ const ItemPriceTables = (props) => {
             </div>
           </>
         :
-          <div className="loading">Loading...</div>
+          <div className="status">
+            {
+              error ?
+                <p className="error-message">Error: Could not obtain listing data</p>
+              :
+                <div>Loading Listing Data...</div>
+            }
+          </div>
       }
     </section>
   );

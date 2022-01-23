@@ -8,6 +8,7 @@ import secondsToDate from "../helpers/secondsToDate";
 const ItemCharts = (props) => {
   const { world, itemID, itemProperties } = props;
   const [itemHistory, setItemHistory] = useState(null);
+  const [error, setError] = useState(false);
   const itemHistoryURL = `https://universalis.app/api/history/${world}/${itemID}?entries=500&statsWithin=604800000&entriesWithin=604800`;
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const ItemCharts = (props) => {
       })
       .catch((error) => {
         console.log('something went wrong: ' + error);
+        setError(true);
       });
     }
   }, [itemProperties]);
@@ -92,7 +94,14 @@ const ItemCharts = (props) => {
             }
           </div>
         :
-          <div>Loading...</div>
+          <div className="status">
+            {
+              error ?
+                <p className="error-message">Error: Could not obtain sales data</p>
+              :
+                <div>Loading Sales Data...</div>
+            }
+          </div>
       }
     </section>
   );

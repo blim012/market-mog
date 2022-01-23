@@ -7,6 +7,7 @@ import ItemCharts from "./ItemCharts";
 import ItemPriceTables from "./ItemPriceTables";
 import ItemDescription from "./ItemDescription";
 import SearchBar from "./SearchBar";
+import Credits from "./Credits";
 
 const ItemData = (props) => {
   const [itemProperties, setItemProperties] = useState(null);
@@ -62,7 +63,7 @@ const ItemData = (props) => {
                     itemProperties={itemProperties} 
                   />
                   <ItemPriceTables
-                    world={world} 
+                    world={world}
                     itemID={itemID} 
                     itemProperties={itemProperties}
                   />
@@ -72,6 +73,7 @@ const ItemData = (props) => {
             }
           </div>
       }
+      <Credits />
     </>
   );
 };

@@ -9,6 +9,7 @@ import './stylesheets/itemPriceTables.css';
 import './stylesheets/style.css';
 import './stylesheets/itemDescription.css';
 import './stylesheets/home.css';
+import './stylesheets/credits.css';
 
 ReactDOM.render(
   <React.StrictMode>

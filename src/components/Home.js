@@ -1,4 +1,5 @@
 import React from "react";
+import Credits from "./Credits";
 import SearchBar from "./SearchBar";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
           to try it out!
         </p>
       </div>
+      <Credits />
     </main>
   );
 };

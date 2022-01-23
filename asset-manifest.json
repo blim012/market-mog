@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/market-mog/static/css/main.3fe21a4c.css",
+    "main.js": "/market-mog/static/js/main.36d95337.js",
+    "static/media/logo512.png": "/market-mog/static/media/logo512.28bd25b83d85b9f98b43.png",
+    "index.html": "/market-mog/index.html",
+    "main.3fe21a4c.css.map": "/market-mog/static/css/main.3fe21a4c.css.map",
+    "main.36d95337.js.map": "/market-mog/static/js/main.36d95337.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3fe21a4c.css",
+    "static/js/main.36d95337.js"
+  ]
+}

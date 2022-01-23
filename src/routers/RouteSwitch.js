@@ -6,7 +6,7 @@ import NotFound from "../components/NotFound";
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='*' element={<NotFound />} />
         <Route path="/" element={<Home />} />

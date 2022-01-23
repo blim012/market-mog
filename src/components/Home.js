@@ -17,7 +17,7 @@ const Home = () => {
           Check out the prices of a slice of (not so) tasty
           <a 
             className="sample-item" 
-            href="/item/36036/balmung"
+            href="/market-mog/item/36036/balmung"
           > Archon Loaf </a>
           to try it out!
         </p>

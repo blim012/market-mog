@@ -37,7 +37,7 @@ const SearchResult = (props) => {
                       data-testid={`result-${idx}`}
                       className="result"
                     >
-                      <a href={`/item/${result.ID}/${world}`}>
+                      <a href={`/market-mog/item/${result.ID}/${world}`}>
                         <p>{result.Name}</p>
                       </a>
                     </li>

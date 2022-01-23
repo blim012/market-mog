@@ -3,7 +3,7 @@ import LogoImage from "../assets/logo512.png";
 
 const Logo = () => {
   return (
-    <a href="/">
+    <a href="/market-mog">
       <img 
         className="market-mog-logo" 
         src={LogoImage} 

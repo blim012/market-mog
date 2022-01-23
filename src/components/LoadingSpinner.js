@@ -8,7 +8,7 @@ const LoadingSpinner = (props) => {
     <div className="loading-spinner">
     {
       (promiseInProgress === true) ?
-        <h3>Loading in Progress...</h3>
+        <div className="loader"></div>
       :
         null
     }

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import SearchResult from "./SearchResult";
 import WorldSelect from "./WorldSelect";
+import LoadingSpinner from "./LoadingSpinner";
 
 const SearchBar = (props) => {
   const [queryURL, setQueryURL] = useState('');
@@ -40,6 +41,7 @@ const SearchBar = (props) => {
             name="item"
             autoComplete="off"
           />
+          <LoadingSpinner area="search-bar-area" />
           <SearchResult queryURL={queryURL} world={world} />
         </div>
         <input 
